@@ -5,7 +5,7 @@ A DHT Spider allows you to sniff the torrents and magnets.You can download what 
 
 ![](/2017-07-22-103921_680x336_scrot.png)
 
-# Usage:
+# Usage
 ```./dht_spider.py [-t|filename] [thread number]```
 
 ```-t```:This option will not storage any file on your computer.Just print the informations on terminal.
@@ -23,3 +23,10 @@ A DHT Spider allows you to sniff the torrents and magnets.You can download what 
 When you get the magnet or torrent file.You should add the one of them into the Bittorrent Client.If few time later,there still haven't got  any node.You should add the sender's IP and port to be a peer(Normally,you can find sender's information in magnets file or terminal logs).Then,the file will begin to download.
 
 当你获得了磁力链接或者种子文件。你必须添加两者之一到BT客户端中。如果几分钟后，仍然没有任何节点。你需要将发送者的IP和端口添加为对等连接（通常情况下，你可以在magnets文件或终端日志中找到发送者的信息）。然后，文件就会开始下载。
+
+# Thanks
+本项目的诞生离不开下面的文章/项目：
+
+[Kademlia、DHT、KRPC、BitTorrent 协议、DHT Sniffer](http://www.cnblogs.com/LittleHann/p/6180296.html)（引用了BEP_0009协议的实现并对其进行错误的改正与改进）
+
+[simDHT](https://github.com/fanpei91/simDHT)（引用了get_peer,find_node,announce_peer的实现，并进行重新封装，实现多线程）
