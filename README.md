@@ -1,7 +1,10 @@
 # DHT-Spider
 A DHT Spider allows you to sniff the torrents and magnets.You can download what the script sniffed via magnets or torrents directly.
 
-一个DHT爬虫，允许你嗅探种子和磁力链接。你可以通过磁力链接或种子文件直接下载资源。  
+一个DHT爬虫，允许你嗅探种子和磁力链接。你可以通过磁力链接或种子文件直接下载资源。
+
+![](/2017-07-22-103921_680x336_scrot.png)
+
 # Usage:
 ```./dht_spider.py [-t|filename] [thread number]```
 
