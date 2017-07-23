@@ -21,6 +21,7 @@ import gc
 import thread
 import sys
 import os
+import signal
 
 infos=[]
 
@@ -36,6 +37,38 @@ TOKEN_LENGTH = 2
 BT_PROTOCOL = "BitTorrent protocol"
 BT_MSG_ID = 20
 EXT_HANDSHAKE_ID = 0
+
+def help():
+    print './dht_spider.py [-t|filename|-h] [thread number]'
+    print '  -t: This option will not storage any file on your computer.Just print the informations on terminal.'
+    print '  filename: Where you want to storage magnets.'
+    print '  -h: Print this help and exit'
+    print '  thread num: How many thread to get the torrents metadata.'
+
+#class watch start
+class Watcher:
+    def __init__(self):
+        self.child = os.fork()
+        if self.child == 0:
+            return
+        else:
+            self.watch()
+
+    def watch(self):
+        try:
+            os.wait()
+        except KeyboardInterrupt:
+            print '[EXIT] Control-C'
+            self.kill()
+        sys.exit()
+
+    def kill(self):
+        try:
+            os.kill(self.child, signal.SIGKILL)
+        except OSError: pass
+
+#class watch end
+
 
 def storage_info(info,metadate_old,address):
     global infos
@@ -534,23 +567,34 @@ class Master(Thread):
             t.setDaemon(True)
             t.start()
 
-trans_queue = Queue()
-try:
-    path=sys.argv[1]
-except:
-    path="hash.log"
-print path
-try:
-    thread_num=int(sys.argv[2])
-except:
-    thread_num=100
-print thread_num
-if path!="-t":
-    if not os.path.exists('BT/'):
-        os.makedirs('BT/')
-master = Master()
-master.start()
-print('Receiving datagrams on :6882')
-dht = DHT_Process(master, "0.0.0.0", 6882, max_node_qsize=200)
-dht.start()
-thread.start_new_thread(dht.auto_send_find_node,())
+#main
+if __name__ == "__main__":
+    if sys.argv[1]=="-h":
+        help()
+        sys.exit(0)
+
+    trans_queue = Queue()
+    #get options
+    try:
+        path=sys.argv[1]
+    except:
+        path="hash.log"
+    print path
+    try:
+        thread_num=int(sys.argv[2])
+    except:
+        thread_num=100
+    print thread_num
+    if path!="-t":
+        if not os.path.exists('BT/'):
+            os.makedirs('BT/')
+    #start watcher
+    Watcher()
+    #metadata process
+    master = Master()
+    master.start()
+    #start DHT Network
+    print('Receiving datagrams on :6882')
+    dht = DHT_Process(master, "0.0.0.0", 6882, max_node_qsize=200)
+    dht.start()
+    thread.start_new_thread(dht.auto_send_find_node,())
