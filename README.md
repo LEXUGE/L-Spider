@@ -6,19 +6,21 @@ A DHT Spider allows you to sniff the torrents and magnets.You can download what 
 ![](/2017-07-22-103921_680x336_scrot.png)
 
 # Usage
-```./dht_spider.py [-t|filename|-h] [thread number]```
+```./dht_spider.py [option]```  
+```[-s]```: This option will not storage any file on your computer.Just print the informations on terminal.  
+```[-s]```: 此选项将不会在您的计算机上存储任何文件。只会在终端上输出信息。
 
-```-t```:This option will not storage any file on your computer.Just print the informations on terminal.  
-```-t```:此选项将不会在你的计算机上存储任何文件。只会在终端上输出信息。
+```[-p:filename]```: Where you want to storage magnets.  
+```[-p:filename]```: 你想存储磁力链接的位置。
 
-```filename```:Where you want to storage magnets.  
-```filename```:存储magnets的文件路径。
+```[-h]```: Print this help and exit.  
+```[-h]```: 输出此帮助并退出。
 
-```-h```:Print this help and exit.  
-```-h```:输出此帮助并退出。
+```[-t:thread num]```: How many thread to get the torrents metadata.  
+```[-t:thread num]```: 解析种子元数据的线程数。
 
-```thread num```:How many thread to get the torrents metadata.  
-```thread num```:获取种子文件metadata的线程数。
+```[-b:(0|1)]```: 0-Do not save the torrent file. 1-Save the torrent file.  
+```[-b:(0|1)]```: 0-不要存储种子文件。 1-存储种子文件。
 
 When you get the magnet or torrent file.You should add the one of them into the Bittorrent Client.If few time later,there still haven't got  any node.You should add the sender's IP and port to be a peer(Normally,you can find sender's information in magnets file or terminal logs).Then,the file will begin to download.
 
@@ -31,8 +33,8 @@ When you get the magnet or torrent file.You should add the one of them into the 
 2. The script will check the info's infohash and announce's token automatically.  
 脚本会自动验证info字段的infohash以及announce的令牌。
 
-3. The default option is ```./dht_spider hash.log 100```.  
-默认的选项是```./dht_spider hash.log 100```。
+3. The default option is ```./dht_spider -p:hash.log -t:100 -b:1```.  
+默认的选项是```./dht_spider -p:hash.log -t:100 -b:1```。
 
 # Principle
 [DHT Network theory and how to make a DHT Spider](https://lexuge.github.io/jekyll/update/2017/07/22/DHT%E7%BD%91%E7%BB%9C%E8%AF%A6%E8%A7%A3%E4%B8%8EDHT%E7%88%AC%E8%99%AB%E7%BC%96%E5%86%99%E6%8C%87%E5%8D%97.html)  
