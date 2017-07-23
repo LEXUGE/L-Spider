@@ -42,7 +42,7 @@ def help():
     print './dht_spider.py [-t|filename|-h] [thread number]'
     print '  -t: This option will not storage any file on your computer.Just print the informations on terminal.'
     print '  filename: Where you want to storage magnets.'
-    print '  -h: Print this help and exit'
+    print '  -h: Print this help and exit.'
     print '  thread num: How many thread to get the torrents metadata.'
 
 #class watch start
@@ -569,6 +569,9 @@ class Master(Thread):
 
 #main
 if __name__ == "__main__":
+    print 'This project is using AGPL-3.0+'
+    print '(C) 2017-2017 LEXUGE.All rights reserved.'
+    print ' '
     if sys.argv[1]=="-h":
         help()
         sys.exit(0)
