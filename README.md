@@ -33,7 +33,7 @@ When you get the magnet or torrent file.You should add the one of them into the 
 [DHT网络详解与DHT爬虫编写指南](https://lexuge.github.io/jekyll/update/2017/07/22/DHT%E7%BD%91%E7%BB%9C%E8%AF%A6%E8%A7%A3%E4%B8%8EDHT%E7%88%AC%E8%99%AB%E7%BC%96%E5%86%99%E6%8C%87%E5%8D%97.html)
 
 # Thanks
-This project are using following articles or projects:  
+This project are using following articles and projects:  
 本项目的诞生离不开下面的文章/项目：
 
 [Kademlia、DHT、KRPC、BitTorrent 协议、DHT Sniffer](http://www.cnblogs.com/LittleHann/p/6180296.html)（引用了BEP_0009协议的实现并对其进行错误的改正与改进）  
