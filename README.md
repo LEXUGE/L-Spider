@@ -6,13 +6,16 @@ A DHT Spider allows you to sniff the torrents and magnets.You can download what 
 ![](/2017-07-22-103921_680x336_scrot.png)
 
 # Usage
-```./dht_spider.py [-t|filename] [thread number]```
+```./dht_spider.py [-t|filename|-h] [thread number]```
 
 ```-t```:This option will not storage any file on your computer.Just print the informations on terminal.  
 ```-t```:此选项将不会在你的计算机上存储任何文件。只会在终端上输出信息。
 
 ```filename```:Where you want to storage magnets.  
 ```filename```:存储magnets的文件路径。
+
+```-h```:Print this help.  
+```-h```:输出此帮助。
 
 ```thread num```:How many thread to get the torrents metadata.  
 ```thread num```:获取种子文件metadata的线程数。
