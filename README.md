@@ -14,8 +14,8 @@ A DHT Spider allows you to sniff the torrents and magnets.You can download what 
 ```filename```:Where you want to storage magnets.  
 ```filename```:存储magnets的文件路径。
 
-```-h```:Print this help.  
-```-h```:输出此帮助。
+```-h```:Print this help and exit.  
+```-h```:输出此帮助并退出。
 
 ```thread num```:How many thread to get the torrents metadata.  
 ```thread num```:获取种子文件metadata的线程数。
@@ -46,5 +46,5 @@ This project are using following articles and projects:
 [simDHT](https://github.com/fanpei91/simDHT)（引用了get_peer,find_node,announce_peer的实现，并进行重新封装，实现多线程）
 
 # License
-This project is license under AGPL 3.0 or Later.  
+This project is using AGPL-3.0+  
 本项目使用AGPL 3.0或更新版本的协议。
