@@ -39,11 +39,56 @@ BT_MSG_ID = 20
 EXT_HANDSHAKE_ID = 0
 
 def help():
-    print './dht_spider.py [-t|filename|-h] [thread number]'
-    print '  -t: This option will not storage any file on your computer.Just print the informations on terminal.'
-    print '  filename: Where you want to storage magnets.'
-    print '  -h: Print this help and exit.'
-    print '  thread num: How many thread to get the torrents metadata.'
+    print './dht_spider.py [option]'
+    print '  [-s]: This option will not storage any file on your computer.Just print the informations on terminal.'
+    print '  [-p:filename]: Where you want to storage magnets.'
+    print '  [-h]: Print this help and exit.'
+    print '  [-t:thread num]: How many thread to get the torrents metadata.'
+    print '  [-b:(0|1)]: 0-Do not save the torrent file. 1-Save the torrent file.'
+
+def get_option():
+    s=0
+    global options
+    global path
+    global thread_num
+    global save_seed
+
+    print 'This project is using AGPL-3.0+'
+    print '(C) 2017-2017 LEXUGE.All rights reserved.'
+    print ' '
+    if sys.argv[1]=="-h":
+        help()
+        sys.exit(0)
+
+    while True:
+        s=s+1
+        try:
+            options.append(sys.argv[s])
+        except:
+            break
+
+    for i in options:
+        if i=="-s":
+            path="-s"
+        if "-p:" in i:
+            path=i.strip("-p:")
+        if "-t:" in i:
+            try:
+                thread_num=int(i.strip("-t:"))
+            except:
+                pass
+        if "-b:" in i:
+            try:
+                save_seed=int(i.strip("-b:"))
+            except:
+                pass
+    if path=="":
+        path="hash.log"
+    if thread_num==0:
+        thread_num=100
+    if (save_seed!=0)and(save_seed!=1):
+        save_seed=1
+
 
 #class watch start
 class Watcher:
@@ -72,10 +117,11 @@ class Watcher:
 
 def storage_info(info,metadate_old,address):
     global infos
+    global save_seed
     global path
     count=0
     flag=0
-    if path!="-t":
+    if path!="-s":
         try:
             test_fo=open(path,"r")
         except:
@@ -85,7 +131,7 @@ def storage_info(info,metadate_old,address):
             flag=1
         test_fo.close()
     if (not(info['hash_id'] in infos))and(flag==0):
-        if path=="-t":
+        if path=="-s":
             pass
         else:
             fo=open(path,"a")
@@ -102,16 +148,17 @@ def storage_info(info,metadate_old,address):
             if count==10:
                 break
             print "   "+str(i['path'][0]),str(i['length'])
-            if path!="-t":
+            if path!="-s":
                 fo.write("   "+str(i['path'][0])+" "+str(i['length'])+"\n")
             count=count+1
 
-        if path!="-t":
+        if path!="-s":
             fo.write("\n\n")
             fo.close()
-            ftest=open("BT/"+info['hash_name']+".torrent","wb")
-            ftest.write(metadate_old)
-            ftest.close()
+            if save_seed==1:
+                ftest=open("BT/"+info['hash_name']+".torrent","wb")
+                ftest.write(metadate_old)
+                ftest.close()
         print "\r\n\r\n"
         infos.append(info['hash_id'])
 
@@ -569,26 +616,18 @@ class Master(Thread):
 
 #main
 if __name__ == "__main__":
-    print 'This project is using AGPL-3.0+'
-    print '(C) 2017-2017 LEXUGE.All rights reserved.'
-    print ' '
-    if sys.argv[1]=="-h":
-        help()
-        sys.exit(0)
+    path=""
+    thread_num=0
+    save_seed=-1
+    options=[]
 
     trans_queue = Queue()
-    #get options
-    try:
-        path=sys.argv[1]
-    except:
-        path="hash.log"
+
+    get_option()
     print path
-    try:
-        thread_num=int(sys.argv[2])
-    except:
-        thread_num=100
     print thread_num
-    if path!="-t":
+    print save_seed
+    if (path!="-s")and(save_seed==1):
         if not os.path.exists('BT/'):
             os.makedirs('BT/')
     #start watcher
