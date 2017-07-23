@@ -28,6 +28,9 @@ When you get the magnet or torrent file.You should add the one of them into the 
 2. The script will check the info's infohash and announce's token automatically.  
 脚本会自动验证info字段的infohash以及announce的令牌。
 
+3. The default option is ```./dht_spider hash.log 100```.  
+默认的选项是```./dht_spider hash.log 100```。
+
 # Principle
 [DHT Network theory and how to make a DHT Spider](https://lexuge.github.io/jekyll/update/2017/07/22/DHT%E7%BD%91%E7%BB%9C%E8%AF%A6%E8%A7%A3%E4%B8%8EDHT%E7%88%AC%E8%99%AB%E7%BC%96%E5%86%99%E6%8C%87%E5%8D%97.html)  
 [DHT网络详解与DHT爬虫编写指南](https://lexuge.github.io/jekyll/update/2017/07/22/DHT%E7%BD%91%E7%BB%9C%E8%AF%A6%E8%A7%A3%E4%B8%8EDHT%E7%88%AC%E8%99%AB%E7%BC%96%E5%86%99%E6%8C%87%E5%8D%97.html)
