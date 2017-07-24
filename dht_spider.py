@@ -70,16 +70,16 @@ def get_option():
     for i in options:
         if i=="-s":
             path="-s"
-        if "-p:" in i:
-            path=i.strip("-p:")
-        if "-t:" in i:
+        if i[:3]=="-p:":
+            path=i[3:]
+        if i[:3]=="-t:":
             try:
-                thread_num=int(i.strip("-t:"))
+                thread_num=int(i[3:])
             except:
                 pass
-        if "-b:" in i:
+        if i[:3]=="-b:":
             try:
-                save_seed=int(i.strip("-b:"))
+                save_seed=int(i[3:])
             except:
                 pass
     if path=="":
