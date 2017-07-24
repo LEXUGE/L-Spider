@@ -54,7 +54,7 @@ def get_option():
     global save_seed
 
     print 'This project is using AGPL-3.0+'
-    print '(C) 2017-2017 LEXUGE.All rights reserved.'
+    print '(C) 2017-2017 LEXUGE.'
     print ' '
     if sys.argv[1]=="-h":
         help()
