@@ -13,7 +13,7 @@ A DHT Spider allows you to sniff the torrents and magnets.You can download what 
 ```[-p:filename]```: Where you want to storage magnets.  
 ```[-p:filename]```: 你想存储磁力链接的位置。
 
-```[-h]```: Print this help and exit.  
+```[-h]```: Print this help and exit.  
 ```[-h]```: 输出此帮助并退出。
 
 ```[-t:thread num]```: How many thread to get the torrents metadata.  
