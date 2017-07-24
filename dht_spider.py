@@ -70,6 +70,7 @@ def get_option():
     for i in options:
         if i=="-s":
             path="-s"
+            save_seed=0
         if i[:3]=="-p:":
             path=i[3:]
         if i[:3]=="-t:":
